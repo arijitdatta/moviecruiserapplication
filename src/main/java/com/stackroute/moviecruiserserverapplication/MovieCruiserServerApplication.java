@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MoviecruiserserverapplicationApplication {
+public class MovieCruiserServerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MoviecruiserserverapplicationApplication.class, args);
+		SpringApplication.run(MovieCruiserServerApplication.class, args);
 	}
 }
