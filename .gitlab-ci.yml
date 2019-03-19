@@ -3,7 +3,7 @@ stages:
  - test
  - build
 services:
- - 'mysql:latest'
+ - 'mysql:5.5'
 variables:
   MYSQL_DATABASE: moviedb
   MYSQL_CI_URL: jdbc:mysql://mysql/moviedb
