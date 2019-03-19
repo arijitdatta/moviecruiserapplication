@@ -1,1 +1,1 @@
-Spring Boot MovieCruiserApplication
+First Micro Service
