@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import {ThumbnailComponent} from './modules/movie/components/thumbnail/thumbnail.component'
+import {TopRatedComponent} from './modules/movie/components/top-rated/top-rated.component'
 
 @Component({
   selector: 'app-root',
   template: `
-     <movie-thumbnail></movie-thumbnail> 
+     <movie-top-rated></movie-top-rated> 
      `,
   styles: []
 })

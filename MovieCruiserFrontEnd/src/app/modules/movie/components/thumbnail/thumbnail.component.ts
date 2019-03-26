@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import{HttpClient} from '@angular/common/http';
 import {Movie} from '../../movie';
 import {MovieService} from '../../movie.service';
@@ -9,15 +9,14 @@ import {MovieService} from '../../movie.service';
   styles: []
 })
 export class ThumbnailComponent implements OnInit {
-  movies: Array<Movie>;
+  @Input()
+  movie: Movie;
   
   constructor(private movieService:MovieService) { 
-    this.movies=[];
+    
   }
 
   ngOnInit() {
-    this.movieService.getPopularMovies().subscribe((movies)=> {
-      this.movies.push(...movies);
-    });
+ 
   }
 }

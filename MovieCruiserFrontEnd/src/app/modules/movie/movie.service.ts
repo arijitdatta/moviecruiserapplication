@@ -10,15 +10,40 @@ export class MovieService {
 
   tmdbEndpoint: string;
   imgPrefix: string;
+  apiKey:string;
 
   constructor(private http:HttpClient) { 
-    this.tmdbEndpoint='https://api.themoviedb.org/3/movie/popular?api_key=e3df5c4aa71828545d1d14c5a1f1868d&page=1';
+    this.apiKey='api_key=e3df5c4aa71828545d1d14c5a1f1868d'
+    this.tmdbEndpoint='https://api.themoviedb.org/3/movie';
     this.imgPrefix='https://image.tmdb.org/t/p/w500';
 
   }
 
-  getPopularMovies(): Observable<Array<Movie>>{
-    return this.http.get(this.tmdbEndpoint).pipe(
+  getMovies(type:string, page: number=1 ): Observable<Array<Movie>>{
+    const moviesEndPoint=`${this.tmdbEndpoint}/${type}?${this.apiKey}&page=${page}`;
+    return this.http.get(moviesEndPoint).pipe(
+      retry(3),
+      map(this.pickMovieResults),
+      map(this.transformPosterPath.bind(this))
+    );
+   
+    
+  }
+
+  getPopularMovies(page: number=1): Observable<Array<Movie>>{
+    const popularMoviesEndPoint=`${this.tmdbEndpoint}/popular?${this.apiKey}&page=${page}`;
+    return this.http.get(popularMoviesEndPoint).pipe(
+      retry(3),
+      map(this.pickMovieResults),
+      map(this.transformPosterPath.bind(this))
+    );
+   
+    
+  }
+
+  getTopRatedMovies(page: number=1): Observable<Array<Movie>>{
+    const topRatedMoviesEndPoint=`${this.tmdbEndpoint}/top_rated?${this.apiKey}&page=${page}`;
+    return this.http.get(topRatedMoviesEndPoint).pipe(
       retry(3),
       map(this.pickMovieResults),
       map(this.transformPosterPath.bind(this))
@@ -35,7 +60,7 @@ export class MovieService {
   }
 
   pickMovieResults(response){
-    return response['results';]
+    return response['results'];
   }
 
 
