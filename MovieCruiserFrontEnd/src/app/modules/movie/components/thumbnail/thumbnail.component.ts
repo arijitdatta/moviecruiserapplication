@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{HttpClient} from '@angular/common/http';
 import {Movie} from '../../movie';
+import {MovieService} from '../../movie.service';
 
 @Component({
   selector: 'movie-thumbnail',
@@ -9,26 +10,14 @@ import {Movie} from '../../movie';
 })
 export class ThumbnailComponent implements OnInit {
   movies: Array<Movie>;
-  tmdbEndpoint: string;
-  imgPrefix: string;
-  constructor(private http:HttpClient) { 
+  
+  constructor(private movieService:MovieService) { 
     this.movies=[];
-    this.tmdbEndpoint='https://api.themoviedb.org/3/movie/popular?api_key=e3df5c4aa71828545d1d14c5a1f1868d&page=1';
-    this.imgPrefix='https://image.tmdb.org/t/p/w500';
-
   }
 
   ngOnInit() {
-    this.http.get(this.tmdbEndpoint).subscribe(
-      (res)=>{
-      
-      const movies=res['results'].map(movie=>
-        {
-          movie.poster_path=`${this.imgPrefix}${movie.poster_path}`;
-          return movie;
-        });
-      this.movies.push(...movies)
+    this.movieService.getPopularMovies().subscribe((movies)=> {
+      this.movies.push(...movies);
     });
   }
-
 }
