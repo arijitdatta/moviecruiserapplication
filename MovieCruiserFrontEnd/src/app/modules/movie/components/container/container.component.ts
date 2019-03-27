@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Movie} from '../../movie';
 import {MovieService} from '../../movie.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'movie-container',
@@ -8,13 +9,21 @@ import {MovieService} from '../../movie.service';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
-  @Input()
+  
   movies:Array<Movie>;
-  constructor() { 
-    
+  movieType: string;
+  constructor(private movieService:MovieService, private route:ActivatedRoute) { 
+    this.movies=[];
+    this.route.data.subscribe((data)=>{
+      this.movieType=data.movieType;
+    });
   }
 
   ngOnInit() {
+   
+    this.movieService.getMovies(this.movieType).subscribe((movies)=> {
+      this.movies.push(...movies);
+    });
   }
 
 }

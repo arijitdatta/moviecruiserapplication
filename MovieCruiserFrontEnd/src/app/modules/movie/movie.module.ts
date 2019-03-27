@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HelloWorldComponent } from './components/hello-world/hello-world.component';
+
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieService } from './movie.service';
-import { PopularComponent } from './components/popular/popular.component';
-import { TopRatedComponent } from './components/top-rated/top-rated.component';
+
+
 import { ContainerComponent } from './components/container/container.component';
+import {MovieRouterModule } from './movie-router.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    MovieRouterModule,
   ],
-  declarations: [HelloWorldComponent, ThumbnailComponent, PopularComponent, TopRatedComponent, ContainerComponent],
-  exports: [HelloWorldComponent, ThumbnailComponent, PopularComponent, TopRatedComponent,ContainerComponent],
+  declarations: [ ThumbnailComponent, ContainerComponent],
+  exports: [ ThumbnailComponent, ContainerComponent,MovieRouterModule],
   providers: [MovieService]
 })
 export class MovieModule { }
