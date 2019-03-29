@@ -3,10 +3,13 @@ import{HttpClient} from '@angular/common/http';
 import {Movie} from '../../movie';
 import {MovieService} from '../../movie.service';
 
+
 @Component({
   selector: 'movie-thumbnail',
   templateUrl: `./thumbnail.component.html`,
-  styles: []
+  styleUrls: [
+    './thumbnail.component.css'
+  ]
 })
 export class ThumbnailComponent implements OnInit {
   @Input()

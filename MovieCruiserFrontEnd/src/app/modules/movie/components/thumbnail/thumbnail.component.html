@@ -1,1 +1,10 @@
-<img [src]="movie?.poster_path" [alt]="movie?.title">
+<mat-card class="movie-thumbnail">
+    <mat-card-header>
+      <mat-card-title>{{movie?.title}}</mat-card-title>
+      <mat-card-subtitle>{{movie?.release_date}}</mat-card-subtitle>
+    </mat-card-header>
+    <img class="movie-image" mat-card-image [src]="movie?.poster_path" [alt]="movie?.title">
+    <mat-card-content class="movie-overview">
+     {{movie?.overview}}
+    </mat-card-content>
+  </mat-card>

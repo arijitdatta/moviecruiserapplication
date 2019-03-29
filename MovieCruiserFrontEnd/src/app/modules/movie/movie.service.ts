@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import{HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators/map';
+
 import {Movie} from './movie';
-import {Observable} from 'rxjs/Observable';
+
 import {retry} from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/internal/operators/map';
 
 @Injectable()
 export class MovieService {
