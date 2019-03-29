@@ -13,11 +13,13 @@ export class MovieService {
   tmdbEndpoint: string;
   imgPrefix: string;
   apiKey:string;
+  watchlistEndpoint: string;
 
   constructor(private http:HttpClient) { 
     this.apiKey='api_key=e3df5c4aa71828545d1d14c5a1f1868d'
     this.tmdbEndpoint='https://api.themoviedb.org/3/movie';
     this.imgPrefix='https://image.tmdb.org/t/p/w500';
+    this.watchlistEndpoint='http://localhost:3000/watchlist';
 
   }
 
@@ -63,6 +65,14 @@ export class MovieService {
 
   pickMovieResults(response){
     return response['results'];
+  }
+
+  addMovieToWatchlist(movie){
+    return this.http.post(this.watchlistEndpoint, movie);
+
+  }
+  getWatchlistedMovies(): Observable<Array<Movie>>{
+    return this.http.get<Array<Movie>>(this.watchlistEndpoint);
   }
 
 

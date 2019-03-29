@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   <span>Arijit's Movie Cruiser Application</span>
   <button mat-button [routerLink]="['/movies/popular']">Popular Movies</button>
   <button mat-button [routerLink]="['/movies/top_rated']">Top Rated Movies</button>
+  <button mat-button [routerLink]="['/movies/watchlist']">My Watchlist</button>
   </mat-toolbar>
      <router-outlet></router-outlet> 
      `,

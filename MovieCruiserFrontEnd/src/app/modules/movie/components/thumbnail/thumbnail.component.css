@@ -6,7 +6,7 @@
 .movie-overview{
     height: 80px;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: auto;   
 }
 
 .movie-image{
@@ -17,4 +17,16 @@
     width:2px;
     background: gray;
     
+}
+
+.movie-title{
+    height: 50px;
+}
+
+.movie-subtitle{
+    height: 20px;
+}
+
+.movie-actions{
+    text-align: right;
 }

@@ -10,20 +10,14 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ContainerComponent implements OnInit {
   
+  @Input()
   movies:Array<Movie>;
-  movieType: string;
-  constructor(private movieService:MovieService, private route:ActivatedRoute) { 
-    this.movies=[];
-    this.route.data.subscribe((data)=>{
-      this.movieType=data.movieType;
-    });
+
+  constructor() { 
+   
   }
 
   ngOnInit() {
-   
-    this.movieService.getMovies(this.movieType).subscribe((movies)=> {
-      this.movies.push(...movies);
-    });
   }
 
 }
