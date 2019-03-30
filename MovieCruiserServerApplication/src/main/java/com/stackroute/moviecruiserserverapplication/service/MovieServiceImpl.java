@@ -28,6 +28,12 @@ public class MovieServiceImpl implements MovieService {
 		if (object.isPresent()) {
 			throw new MovieAlreadyExistsException("Could Not save movie. It already exists in the database");
 		}
+		System.out.println("---------------------------------------------------------------------");
+		System.out.println(movie.getTitle());
+		System.out.println(movie.getOverview());
+		System.out.println(movie.getPoster_path());
+		System.out.println(movie.getRelease_date());
+		System.out.println("---------------------------------------------------------------------");
 		movieRepo.save(movie);
 
 		return true;

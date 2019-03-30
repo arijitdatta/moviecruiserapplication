@@ -11,22 +11,26 @@ public class Movie {
 	@Id
 	@Column(name = "id")
 	private int id;
-	@Column(name = "name")
-	private String name;
-	@Column(name = "comments")
-	private String comments;
-	@Column(name = "poster_path")
-	private String posterPath;
-
+	@Column(name = "title")
+	private String title;
+	@Column(name = "overview", length=10000)
+	private String overview;
+	@Column(name = "poster_path", length=10000)
+	private String poster_path;
+	@Column(name="release_date")
+	private String release_date;
+	
 	public Movie() {
+		
 	}
 
-	public Movie(int id, String name, String comments, String posterPath) {
+	public Movie(int id, String title, String overview, String poster_path, String release_date) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.comments = comments;
-		this.posterPath = posterPath;
+		this.title = title;
+		this.overview = overview;
+		this.poster_path = poster_path;
+		this.release_date = release_date;
 	}
 
 	public int getId() {
@@ -37,28 +41,46 @@ public class Movie {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public String getComments() {
-		return comments;
+	public String getOverview() {
+		return overview;
 	}
 
-	public void setComments(String comments) {
-		this.comments = comments;
+	public void setOverview(String overview) {
+		this.overview = overview;
 	}
 
-	public String getPosterPath() {
-		return posterPath;
+	public String getPoster_path() {
+		return poster_path;
 	}
 
-	public void setPosterPath(String posterPath) {
-		this.posterPath = posterPath;
+	public void setPoster_path(String poster_path) {
+		this.poster_path = poster_path;
 	}
+
+	public String getRelease_date() {
+		return release_date;
+	}
+
+	public void setRelease_date(String release_date) {
+		this.release_date = release_date;
+	}
+
+	
+	
+	
+	
+	
+
+	
+
+	
 
 }

@@ -14,14 +14,18 @@ export class MovieService {
   imgPrefix: string;
   apiKey:string;
   watchlistEndpoint: string;
+  springEndpoint: string;
 
   constructor(private http:HttpClient) { 
     this.apiKey='api_key=e3df5c4aa71828545d1d14c5a1f1868d'
     this.tmdbEndpoint='https://api.themoviedb.org/3/movie';
     this.imgPrefix='https://image.tmdb.org/t/p/w500';
     this.watchlistEndpoint='http://localhost:3000/watchlist';
+    this.springEndpoint='http://localhost:8080/api/movie';
 
   }
+
+  
 
   getMovies(type:string, page: number=1 ): Observable<Array<Movie>>{
     const moviesEndPoint=`${this.tmdbEndpoint}/${type}?${this.apiKey}&page=${page}`;
@@ -68,11 +72,15 @@ export class MovieService {
   }
 
   addMovieToWatchlist(movie){
-    return this.http.post(this.watchlistEndpoint, movie);
+   // local json server testing -  return this.http.post(this.watchlistEndpoint, movie);
+   // spring actual backend 
+   return this.http.post(this.springEndpoint, movie);
 
   }
   getWatchlistedMovies(): Observable<Array<Movie>>{
-    return this.http.get<Array<Movie>>(this.watchlistEndpoint);
+    // local jison server testing - return this.http.get<Array<Movie>>(this.watchlistEndpoint);
+    // spring actual backend
+    return this.http.get<Array<Movie>>(this.springEndpoint);
   }
 
 

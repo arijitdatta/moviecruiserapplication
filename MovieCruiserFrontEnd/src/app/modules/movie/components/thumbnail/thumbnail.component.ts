@@ -24,6 +24,9 @@ export class ThumbnailComponent implements OnInit {
  
   }
   addToWatchlist(){
+    console.log("Testing2");
+    console.log(this.movie.title);
+    console.log(this.movie.release_date);
     this.movieService.addMovieToWatchlist(this.movie).subscribe((movie)=>{
       this.snackBar.open('Movie added to watchlist.', '', {
         duration:2000
