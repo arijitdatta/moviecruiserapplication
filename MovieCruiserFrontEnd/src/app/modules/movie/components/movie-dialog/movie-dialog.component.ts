@@ -29,9 +29,7 @@ export class MovieDialogComponent implements OnInit {
     this.dialogRef.close();
   }
   updateComments(){
-    console.log("Comment 1 ", this.comments);
     this.movie.overview=this.comments;
-    console.log("Overview 2 ", this.movie.overview);
     this.dialogRef.close();
     this.movieService.updateWatchlistedItem(this.movie).subscribe((movie)=>{
       this.snackBar.open("Movie comments updated", "", {duration:2000,})

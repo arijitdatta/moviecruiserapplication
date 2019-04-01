@@ -90,7 +90,6 @@ export class MovieService {
   }
 
   updateWatchlistedItem(movie){
-    console.log("Overview 3 ", movie.overview);
     const url=`${this.springEndpoint}/${movie.id}`;
     return this.http.put(url, movie);
   }
