@@ -8,6 +8,8 @@
      {{movie?.overview}}
     </mat-card-content>
     <mat-card-actions class="movie-actions">
-      <button mat-button (click)="addToWatchlist()" color="primary">Add to Watchlist</button>
+      <button mat-button *ngIf="!useWatchlistApi" (click)="addToWatchlist()" color="primary">Add to Watchlist</button>
+      <button mat-button *ngIf="useWatchlistApi" (click)="deleteFromWatchlist()" color="primary">Delete</button>
+      <button mat-button *ngIf="useWatchlistApi" (click)="updateWatchlistedItem('update')" color="primary">Update</button>
     </mat-card-actions>
   </mat-card>

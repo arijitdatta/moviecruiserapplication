@@ -6,13 +6,14 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 @Component({
   selector: 'movie-watchlist',
   template: `
-    <movie-container [movies]="movies"></movie-container>
+    <movie-container [movies]="movies" [useWatchlistApi]='useWatchlistApi'></movie-container>
   `,
   styles: []
 })
 export class WatchlistComponent implements OnInit {
 
   movies:Array<Movie>;
+  useWatchlistApi=true;
   constructor(private movieService:MovieService, private matSnackBar:MatSnackBar) {
     this.movies=[];
    }

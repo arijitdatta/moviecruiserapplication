@@ -7,7 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'movie-tmdb-container',
   template: `
-   <movie-container [movies]="movies"></movie-container>
+   <movie-container [movies]='movies' ></movie-container>
   `,
   styles: []
 })

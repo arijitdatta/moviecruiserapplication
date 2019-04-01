@@ -77,10 +77,22 @@ export class MovieService {
    return this.http.post(this.springEndpoint, movie);
 
   }
+
+  deleteMovieFromWatchlist(movie:Movie){
+    const url=`${this.springEndpoint}/${movie.id}`;
+    return this.http.delete(url, {responseType:'text'});
+  }
+
   getWatchlistedMovies(): Observable<Array<Movie>>{
     // local jison server testing - return this.http.get<Array<Movie>>(this.watchlistEndpoint);
     // spring actual backend
     return this.http.get<Array<Movie>>(this.springEndpoint);
+  }
+
+  updateWatchlistedItem(movie){
+    console.log("Overview 3 ", movie.overview);
+    const url=`${this.springEndpoint}/${movie.id}`;
+    return this.http.put(url, movie);
   }
 
 

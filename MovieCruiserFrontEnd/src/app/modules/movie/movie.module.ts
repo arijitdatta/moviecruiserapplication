@@ -10,9 +10,13 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 import { ContainerComponent } from './components/container/container.component';
-import {MovieRouterModule } from './movie-router.module';
+import { MovieRouterModule } from './movie-router.module';
 import { WatchlistComponent } from './components/watchlist/watchlist.component';
 import { TmdbContainerComponent } from './components/tmdb-container/tmdb-container.component';
+import { MovieDialogComponent } from './components/movie-dialog/movie-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -22,9 +26,13 @@ import { TmdbContainerComponent } from './components/tmdb-container/tmdb-contain
     CommonModule,
     HttpClientModule,
     MovieRouterModule,
+    MatDialogModule,
+    MatInputModule,
+    FormsModule,
   ],
-  declarations: [ ThumbnailComponent, ContainerComponent, WatchlistComponent, TmdbContainerComponent],
-  exports: [ ThumbnailComponent, ContainerComponent,MovieRouterModule],
+  declarations: [ ThumbnailComponent, ContainerComponent, WatchlistComponent, TmdbContainerComponent, MovieDialogComponent],
+  entryComponents:[MovieDialogComponent],
+  exports: [ ThumbnailComponent, ContainerComponent,MovieRouterModule,MovieDialogComponent],
   providers: [MovieService]
 })
 export class MovieModule { }

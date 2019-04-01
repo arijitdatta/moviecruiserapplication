@@ -1,8 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import{HttpClient} from '@angular/common/http';
 import {Movie} from '../../movie';
-import {MovieService} from '../../movie.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MovieDialogComponent } from '../movie-dialog/movie-dialog.component';
 
 
 @Component({
@@ -15,8 +16,18 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class ThumbnailComponent implements OnInit {
   @Input()
   movie: Movie;
+
+  @Input()
+  useWatchlistApi:boolean;
+
+  @Output()
+  deleteMovie=new EventEmitter();
+
+  @Output()
+  addMovie=new EventEmitter();
+
   
-  constructor(private movieService:MovieService, private snackBar:MatSnackBar) { 
+  constructor(private snackBar:MatSnackBar, public dialog:MatDialog) { 
     
   }
 
@@ -24,13 +35,21 @@ export class ThumbnailComponent implements OnInit {
  
   }
   addToWatchlist(){
-    console.log("Testing2");
-    console.log(this.movie.title);
-    console.log(this.movie.release_date);
-    this.movieService.addMovieToWatchlist(this.movie).subscribe((movie)=>{
-      this.snackBar.open('Movie added to watchlist.', '', {
-        duration:2000
-      } );
-    } );
+    
+    this.addMovie.emit(this.movie);
+  }
+
+  deleteFromWatchlist(){
+    this.deleteMovie.emit(this.movie);
+  }
+
+  updateWatchlistedItem(actionType){
+    let dialogRef=this.dialog.open(MovieDialogComponent, {
+      width: '400px',
+      data:{obj:this.movie, actionType:actionType}      
+    });
+    dialogRef.afterClosed().subscribe(result=>{
+      console.log('The dialog was closed.');
+    });
   }
 }
