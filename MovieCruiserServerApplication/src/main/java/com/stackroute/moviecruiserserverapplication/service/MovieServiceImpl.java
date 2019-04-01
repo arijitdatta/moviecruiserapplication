@@ -42,6 +42,15 @@ public class MovieServiceImpl implements MovieService {
 	@Override
 	public Movie updateMovie(Movie updatedMovie) throws MovieNotFoundException {
 		final Movie movie=movieRepo.findById(updatedMovie.getId()).orElse(null);
+		if(null==movie) {
+			throw new MovieNotFoundException("Could not delete. Movie not found!");
+		}
+		movie.setOverview(updatedMovie.getOverview());
+		movie.setPoster_path(updatedMovie.getPoster_path());
+		movie.setRelease_date(updatedMovie.getRelease_date());
+		movie.setTitle(updatedMovie.getTitle());
+		
+		movieRepo.save(movie);
 		return movie;
 	}
 
