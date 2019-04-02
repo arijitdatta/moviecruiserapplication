@@ -15,6 +15,7 @@ export class MovieService {
   apiKey:string;
   watchlistEndpoint: string;
   springEndpoint: string;
+  tmdbSearchEndpoint: string;
 
   constructor(private http:HttpClient) { 
     this.apiKey='api_key=e3df5c4aa71828545d1d14c5a1f1868d'
@@ -22,6 +23,8 @@ export class MovieService {
     this.imgPrefix='https://image.tmdb.org/t/p/w500';
     this.watchlistEndpoint='http://localhost:3000/watchlist';
     this.springEndpoint='http://localhost:8080/api/movie';
+    this.tmdbSearchEndpoint='https://api.themoviedb.org/3/search/movie?';
+
 
   }
 
@@ -94,5 +97,14 @@ export class MovieService {
     return this.http.put(url, movie);
   }
 
+  searchMovies(searchKey:string): Observable<Array<Movie>>{
+    if(searchKey.length>0){
+      const url=`${this.tmdbSearchEndpoint}${this.apiKey}&language=en-US&page=1&include_adult=false&query=${searchKey}`;
+      return this.http.get(url).pipe(
+        retry(3),
+        map(this.pickMovieResults),
+        map(this.transformPosterPath.bind(this)));
+  }
+  }
 
 }

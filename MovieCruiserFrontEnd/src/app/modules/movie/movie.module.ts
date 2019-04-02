@@ -17,6 +17,8 @@ import { MovieDialogComponent } from './components/movie-dialog/movie-dialog.com
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
+import { SearchComponent } from './components/search/search.component';
+
 
 @NgModule({
   imports: [
@@ -30,9 +32,9 @@ import {FormsModule} from '@angular/forms';
     MatInputModule,
     FormsModule,
   ],
-  declarations: [ ThumbnailComponent, ContainerComponent, WatchlistComponent, TmdbContainerComponent, MovieDialogComponent],
+  declarations: [ ThumbnailComponent, ContainerComponent, WatchlistComponent, TmdbContainerComponent, MovieDialogComponent, SearchComponent],
   entryComponents:[MovieDialogComponent],
-  exports: [ ThumbnailComponent, ContainerComponent,MovieRouterModule,MovieDialogComponent],
+  exports: [ ThumbnailComponent, ContainerComponent,MovieRouterModule,MovieDialogComponent,SearchComponent],
   providers: [MovieService]
 })
 export class MovieModule { }
