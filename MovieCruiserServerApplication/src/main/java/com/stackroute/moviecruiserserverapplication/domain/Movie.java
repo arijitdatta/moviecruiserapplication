@@ -13,9 +13,9 @@ public class Movie {
 	private int id;
 	@Column(name = "title")
 	private String title;
-	@Column(name = "overview", length=10000)
+	@Column(name = "overview", length=3000)
 	private String overview;
-	@Column(name = "poster_path", length=10000)
+	@Column(name = "poster_path", length=3000)
 	private String poster_path;
 	@Column(name="release_date")
 	private String release_date;
