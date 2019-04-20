@@ -1,4 +1,4 @@
-package com.stackroute.moviecruiserauthentication.MovieCruiserAuthenticationService;
+package com.stackroute.moviecruiserauthentication;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
