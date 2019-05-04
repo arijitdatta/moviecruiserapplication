@@ -21,8 +21,8 @@ export class MovieService {
     this.apiKey='api_key=e3df5c4aa71828545d1d14c5a1f1868d'
     this.tmdbEndpoint='https://api.themoviedb.org/3/movie';
     this.imgPrefix='https://image.tmdb.org/t/p/w500';
-    this.watchlistEndpoint='http://localhost:3000/watchlist';
-    this.springEndpoint='http://localhost:8080/api/movie';
+    //local json server testing this.watchlistEndpoint='http://localhost:3000/watchlist';
+    this.springEndpoint='http://localhost:8082/api/v1/movieservice';
     this.tmdbSearchEndpoint='https://api.themoviedb.org/3/search/movie?';
 
 

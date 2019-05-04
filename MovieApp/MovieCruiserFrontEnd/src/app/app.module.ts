@@ -14,9 +14,14 @@ import { AppComponent } from './app.component';
 
 
 const appRoutes:Routes=[
+  //{
+  //  path:'',
+  //  redirectTo: 'movies',
+  //  pathMatch: 'full',
+  // }
   {
     path:'',
-    redirectTo: 'movies',
+    redirectTo: '/user/login',
     pathMatch: 'full',
   }
 ]

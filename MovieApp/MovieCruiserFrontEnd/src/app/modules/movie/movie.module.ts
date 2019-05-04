@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ThumbnailComponent } from './components/thumbnail/thumbnail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MovieService } from './movie.service';
+import { TokenInterceptorService } from './interceptor.service';
+
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -18,6 +20,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 @NgModule({
@@ -35,6 +38,12 @@ import { SearchComponent } from './components/search/search.component';
   declarations: [ ThumbnailComponent, ContainerComponent, WatchlistComponent, TmdbContainerComponent, MovieDialogComponent, SearchComponent],
   entryComponents:[MovieDialogComponent],
   exports: [ ThumbnailComponent, ContainerComponent,MovieRouterModule,MovieDialogComponent,SearchComponent],
-  providers: [MovieService]
+  providers: [MovieService ,{
+    provide:HTTP_INTERCEPTORS, 
+    useClass: TokenInterceptorService,
+    multi:true
+  }
+
+  ],
 })
 export class MovieModule { }

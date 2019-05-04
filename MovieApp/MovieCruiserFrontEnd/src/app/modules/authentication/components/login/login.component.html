@@ -1,0 +1,21 @@
+<form class="login-form" #loginForm="ngForm" (ngSubmit)="loginUser()" [style.fontSize.px]="20">
+    <div class="login-block">
+        <div class="row">
+            <h3>Login User</h3>
+        </div>
+        <div class="row">
+            <!-- hintLabel="User id: Minimum 5 and maximum 10 characters long"-->
+            <mat-form-field class="login-input-full-width">
+                <input id="userId" matInput placeholder="User ID" [(ngModel)]="newUser.userId" name="userId" required minlength="5" maxlength="10" #userId="ngModel">
+            </mat-form-field>
+            <mat-form-field class="login-input-full-width">
+                <input id="password" matInput placeholder="Password" [(ngModel)]="newUser.password" name="password">
+            </mat-form-field>
+        </div>
+        <div>
+            <button class="login-user" mat-raised-button color="primary" type="submit" (click)="loginUser()">Login user</button>
+            <button class="login-user" mat-raised-button color="primary" [routerLink]="['/user/register']">Register</button> 
+
+        </div>
+    </div>
+</form>
