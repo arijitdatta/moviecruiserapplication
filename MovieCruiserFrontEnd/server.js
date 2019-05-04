@@ -1,9 +1,0 @@
-var express=require("express");
-var app=express()
-app.use(express.static(__dirname+'/dist'))
-app.get('/', function name(req,res) {
-    res.status(200).send('OK')
-})
-app.listen(4200,function(request,response){
-
-});

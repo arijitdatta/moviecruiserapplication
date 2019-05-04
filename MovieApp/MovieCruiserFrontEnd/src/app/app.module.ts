@@ -9,6 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {FormsModule} from '@angular/forms';
 
 import {MovieModule} from './modules/movie/movie.module';
+import {AuthenticationModule} from './modules/authentication/authentication.module';
 import { AppComponent } from './app.component';
 
 
@@ -36,6 +37,7 @@ const appRoutes:Routes=[
     MovieModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes),
+    AuthenticationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
