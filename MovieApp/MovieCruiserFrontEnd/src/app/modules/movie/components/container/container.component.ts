@@ -36,17 +36,20 @@ export class ContainerComponent implements OnInit {
 
   deleteFromWatchlist(movie){
 
-    for(var i=0; i<this.movies.length;i++){
-      if(this.movies[i].title===movie.title){
-        this.movies.splice(i,1);
-      }
-    }
+    let message=`${movie.title} has been deleted from your watchlist.`
+    //for(var i=0; i<this.movies.length;i++){
+      //if(this.movies[i].title===movie.title){
+        //this.movies.splice(i,1);
+      //}
+    //}
    
     this.movieService.deleteMovieFromWatchlist(movie).subscribe((movie)=>{
-      this.snackBar.open('Movie removed from watchlist.', '', {
+      this.snackBar.open(message, '', {
          duration:2000
        } );
      } );
+     const index=this.movies.indexOf(movie);
+     this.movies.splice(index,1)
    }
   
   

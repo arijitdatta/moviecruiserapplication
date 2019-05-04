@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import {MovieModule} from './modules/movie/movie.module';
 import {AuthenticationModule} from './modules/authentication/authentication.module';
 import { AppComponent } from './app.component';
+import {AuthguardService} from './authguard.service';
 
 
 const appRoutes:Routes=[
@@ -44,7 +45,7 @@ const appRoutes:Routes=[
     RouterModule.forRoot(appRoutes),
     AuthenticationModule,
   ],
-  providers: [],
+  providers: [AuthguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

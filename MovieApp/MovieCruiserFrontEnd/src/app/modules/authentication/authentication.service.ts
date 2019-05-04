@@ -38,11 +38,11 @@ export class AuthenticationService {
     return localStorage.getItem(TOKEN_NAME);
   }
 
-  deleteToken(token:string){
-    return localStorage.deleteItem(TOKEN_NAME);
+  deleteToken(){
+    return localStorage.removeItem(TOKEN_NAME);
   }
 
-  getTOkenExpirationDate(token: string): Date{
+  getTokenExpirationDate(token: string): Date{
     const decoded=jwt_decode(token);
     if(decoded.exp === undefined) return null;
     const date=new Date(0);
@@ -53,7 +53,7 @@ export class AuthenticationService {
   isTokenExpired(token?: string):boolean{
     if(!token) token = this.getToken();
     if(!token) return true;
-    const date=this.getTOkenExpirationDate(token);
+    const date=this.getTokenExpirationDate(token);
     if(date===undefined || date===null) return false;
     return !(date.valueOf()>new Date().valueOf())
 
