@@ -49,7 +49,7 @@ export class ThumbnailComponent implements OnInit {
       data:{obj:this.movie, actionType:actionType}      
     });
     dialogRef.afterClosed().subscribe(result=>{
-      console.log('The dialog was closed.');
+
     });
   }
 }

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.stackroute.moviecruiserserverapplication.domain.Movie;
 import com.stackroute.moviecruiserserverapplication.exception.MovieAlreadyExistsException;
@@ -28,8 +29,9 @@ import com.stackroute.moviecruiserserverapplication.service.MovieService;
 
 import io.jsonwebtoken.Jwts;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
+@EnableWebMvc
+@CrossOrigin("*")
 @RequestMapping("/api/v1/movieservice")
 public class MovieCruiserController {
 
@@ -62,13 +64,14 @@ public class MovieCruiserController {
 	@PostMapping("/movie")
 	public ResponseEntity<?> saveMovie(@RequestBody final Movie movie, HttpServletRequest request,
 			HttpServletResponse response) {
-		System.out.println("Saving move");
-		final String authHeader = request.getHeader("authorization");
+
+		final String authHeader = request.getHeader("Authorization");
 		final String token = authHeader.substring(7);
 		String userId = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody().getSubject();
 
 		try {
 			movie.setUserId(userId);
+
 			movieService.saveMovie(movie);
 
 		} catch (MovieAlreadyExistsException e) {
@@ -111,7 +114,7 @@ public class MovieCruiserController {
 	public @ResponseBody ResponseEntity<List<Movie>> fetchMyMovies(final ServletRequest req,
 			final ServletResponse res) {
 		final HttpServletRequest request = (HttpServletRequest) req;
-		final String authHeader = request.getHeader("authorization");
+		final String authHeader = request.getHeader("Authorization");
 		final String token = authHeader.substring(7);
 		String userId = Jwts.parser().setSigningKey("secretkey").parseClaimsJws(token).getBody().getSubject();
 

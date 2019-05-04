@@ -18,11 +18,8 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(){
-    console.log("REgister User", this.newUser.userId, this.newUser.firstName);
-    console.log('new user', this.newUser);
     this.authService.registerUser(this.newUser).subscribe((data)=>{
-      console.log('user data', data);
-      this.router.navigate(['/login']);
+      this.router.navigate(['/user/login']);
     })
   }
 }

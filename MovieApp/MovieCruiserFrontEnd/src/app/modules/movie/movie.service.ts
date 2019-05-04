@@ -28,7 +28,9 @@ export class MovieService {
 
   }
 
-  
+  /**
+   * TMDB SERVICES STARTS HERE ----------------------------------------
+   */
 
   getMovies(type:string, page: number=1 ): Observable<Array<Movie>>{
     const moviesEndPoint=`${this.tmdbEndpoint}/${type}?${this.apiKey}&page=${page}`;
@@ -74,29 +76,6 @@ export class MovieService {
     return response['results'];
   }
 
-  addMovieToWatchlist(movie){
-   // local json server testing -  return this.http.post(this.watchlistEndpoint, movie);
-   // spring actual backend 
-   return this.http.post(this.springEndpoint, movie);
-
-  }
-
-  deleteMovieFromWatchlist(movie:Movie){
-    const url=`${this.springEndpoint}/${movie.id}`;
-    return this.http.delete(url, {responseType:'text'});
-  }
-
-  getWatchlistedMovies(): Observable<Array<Movie>>{
-    // local jison server testing - return this.http.get<Array<Movie>>(this.watchlistEndpoint);
-    // spring actual backend
-    return this.http.get<Array<Movie>>(this.springEndpoint);
-  }
-
-  updateWatchlistedItem(movie){
-    const url=`${this.springEndpoint}/${movie.id}`;
-    return this.http.put(url, movie);
-  }
-
   searchMovies(searchKey:string): Observable<Array<Movie>>{
     if(searchKey.length>0){
       const url=`${this.tmdbSearchEndpoint}${this.apiKey}&language=en-US&page=1&include_adult=false&query=${searchKey}`;
@@ -106,5 +85,36 @@ export class MovieService {
         map(this.transformPosterPath.bind(this)));
   }
   }
+
+  /**
+   * MOVIE MICRO SERVICES STARTS HERE ---------------------------
+   */
+
+
+  addMovieToWatchlist(movie){
+   // local json server testing -  return this.http.post(this.watchlistEndpoint, movie);
+   // spring actual backend 
+
+   return this.http.post(this.springEndpoint+'/movie', movie);
+
+  }
+
+  deleteMovieFromWatchlist(movie:Movie){
+    const url=`${this.springEndpoint}`+`/movie/`+`${movie.id}`;
+    return this.http.delete(url, {responseType:'text'});
+  }
+
+  getWatchlistedMovies(): Observable<Array<Movie>>{
+    // local jison server testing - return this.http.get<Array<Movie>>(this.watchlistEndpoint);
+    // spring actual backend
+    return this.http.get<Array<Movie>>(this.springEndpoint+'/movies');
+  }
+
+  updateWatchlistedItem(movie){
+    const url=`${this.springEndpoint}`+`/movie/`+`${movie.id}`;
+    return this.http.put(url, movie);
+  }
+
+ 
 
 }

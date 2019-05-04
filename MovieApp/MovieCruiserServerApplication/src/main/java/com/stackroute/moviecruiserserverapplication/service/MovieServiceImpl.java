@@ -41,8 +41,8 @@ public class MovieServiceImpl implements MovieService {
 			throw new MovieNotFoundException("Could not delete. Movie not found!");
 		}
 		movie.setOverview(updatedMovie.getOverview());
-		movie.setPosterPath(updatedMovie.getPosterPath());
-		movie.setReleaseDate(updatedMovie.getReleaseDate());
+		movie.setPoster_path(updatedMovie.getPoster_path());
+		movie.setRelease_date(updatedMovie.getRelease_date());
 		movie.setTitle(updatedMovie.getTitle());
 		
 		movieRepo.save(movie);

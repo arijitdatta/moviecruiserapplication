@@ -22,7 +22,6 @@ export class AuthenticationService {
 
    registerUser(newuser){
      const url=this.springEndPoint+"/register";
-     console.log('newuser', newuser);
      return this.httpClient.post(url,newuser,{responseType: 'text'});
    }
 
