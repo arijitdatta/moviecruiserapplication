@@ -6,7 +6,7 @@ services:
     restart: always
     network_mode: host
     ports:
-      - 8080:8080
+      - 8089:8089
     expose:
       - 8089
     depends_on:
@@ -17,7 +17,7 @@ services:
     restart: always
     network_mode: host
     ports:
-      - 8020:8082
+      - 8082:8082
     expose:
       - 8082
     depends_on:
@@ -32,6 +32,11 @@ services:
      MYSQL_DATABASE: moviedb
      MYSQL_USER: app_root
      MYSQL_PASSWORD: root
-
-
+  angular:
+   image: angular-app
+   build: MovieCruiserFrontEnd/
+   network_mode: host
+   container_name: angular-docker
+   ports:
+     - 4200:4200
 
