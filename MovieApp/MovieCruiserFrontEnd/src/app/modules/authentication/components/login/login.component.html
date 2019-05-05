@@ -12,9 +12,9 @@
                 <input id="password" matInput type="password" placeholder="Password" [(ngModel)]="newUser.password" name="password">
             </mat-form-field>
         </div>
-        <div>
+        <div class="row">
             <button class="login-user" mat-raised-button color="primary" type="submit" (click)="loginUser()">Login user</button>
-            <button class="login-user" mat-raised-button color="primary" [routerLink]="['/user/register']">Register</button> 
+            <button class="register-user" mat-raised-button color="primary" [routerLink]="['/user/register']">Register</button> 
 
         </div>
     </div>

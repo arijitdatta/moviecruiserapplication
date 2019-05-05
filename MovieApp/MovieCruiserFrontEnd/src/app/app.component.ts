@@ -10,7 +10,7 @@ import {Router } from '@angular/router';
   <button mat-button [routerLink]="['/movies/popular']">Popular Movies</button>
   <button mat-button [routerLink]="['/movies/top_rated']">Top Rated Movies</button>
   <button mat-button [routerLink]="['/movies/watchlist']">My Watchlist</button>
-  <button mat-button [routerLink]="['/movies/search']">Search</button>
+  <button mat-button class="search-button" [routerLink]="['/movies/search']">Search</button>
   <!-- <button mat-button [routerLink]="['/user/login']">User Login</button>
   <button mat-button [routerLink]="['/user/register']">User Register</button> -->
   <button mat-button (click)="logout()">Logout</button>
