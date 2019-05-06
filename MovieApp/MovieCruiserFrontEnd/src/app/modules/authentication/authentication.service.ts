@@ -12,6 +12,7 @@ export const TOKEN_NAME:string='jwt_token'
 
 @Injectable()
 export class AuthenticationService {
+  mockApi:'http://example/test';
   springEndPoint: string;
   token: string;
 
