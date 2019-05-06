@@ -6,10 +6,10 @@
         <div class="row">
             <!-- hintLabel="User id: Minimum 5 and maximum 10 characters long"-->
             <mat-form-field class="login-input-full-width">
-                <input id="userId" matInput placeholder="User ID" [(ngModel)]="newUser.userId" name="userId" required minlength="5" maxlength="10" #userId="ngModel">
+                <input id="userId" class="inputID" matInput placeholder="User ID" [(ngModel)]="newUser.userId" name="userId" required minlength="5" maxlength="10" #userId="ngModel">
             </mat-form-field>
             <mat-form-field class="login-input-full-width">
-                <input id="password" matInput type="password" placeholder="Password" [(ngModel)]="newUser.password" name="password">
+                <input id="password" class="inputPass" matInput type="password" placeholder="Password" [(ngModel)]="newUser.password" name="password">
             </mat-form-field>
         </div>
         <div class="row">

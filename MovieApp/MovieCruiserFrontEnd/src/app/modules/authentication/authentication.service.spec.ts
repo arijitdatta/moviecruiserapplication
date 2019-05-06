@@ -42,16 +42,16 @@ describe('AuthenticationService', ()=>{
 
     it('should register user data', fakeAsync(()=>{
         let data=testConfig.addUser.positive;
-        inject(AuthenticationService, HttpTestingController],(backend:HttpTestingController)=>{
+        inject([AuthenticationService, HttpTestingController],(backend:HttpTestingController)=>{
             const mockReq=backend.expectOne(authService.springEndPoint);
-            expect(mock.request.url).equal(authService.springEndPoint, 'requested url should match with json server api url');
-            expect(mockReq.requeset.method).toBe('POST', 'Should handle requested method type');
+            expect(mockReq.request.url).toEqual(authService.springEndPoint, 'requested url should match with json server api url');
+            expect(mockReq.request.method).toBe('POST', 'Should handle requested method type');
             mockReq.flush(data);
             backend.verify();
         });
 
 
-        authService.registerUser(data).subscribe((res:any)={
+        authService.registerUser(data).subscribe((res:any)=>{
             expect(res).toBeDefined();
             expect(res._body).toBe(data,'data should be same');
 
@@ -61,16 +61,16 @@ describe('AuthenticationService', ()=>{
 
     it('should login user', fakeAsync(()=>{
         let userdata=testConfig.loginUser.positive;
-        inject(AuthenticationService, HttpTestingController],(backend:HttpTestingController)=>{
+        inject([AuthenticationService, HttpTestingController],(backend:HttpTestingController)=>{
             const mockReq=backend.expectOne(authService.springEndPoint);
-            expect(mock.request.url).equal(authService.springEndPoint, 'requested url should match with json server api url');
-            expect(mockReq.requeset.method).toBe('POST', 'Should handle requested method type');
-            mockReq.flush(data);
+            expect(mockReq.request.url).toEqual(authService.springEndPoint, 'requested url should match with json server api url');
+            expect(mockReq.request.method).toBe('POST', 'Should handle requested method type');
+            mockReq.flush(userdata);
             backend.verify();
         });
 
 
-        authService.loginUser(userdata).subscribe((res:any)={
+        authService.loginUser(userdata).subscribe((res:any)=>{
             expect(res).toBeDefined();
             expect(res._body).toBe(userdata,'data should be same');
 
